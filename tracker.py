@@ -1,13 +1,22 @@
+"""
+Video Course Tracker
+Developed by Vignesh_N_U
+For support and contact, call 7338085595 or email vigneshun80@gmail.com
+Copyright (c) 2024 Vignesh_N_U
+"""
+
 import os
 import sqlite3
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, filedialog, messagebox
 
 class VideoCourseTracker:
+    import tkinter.messagebox as messagebox
+
     def __init__(self, root, courses_path):
         self.root = root
         self.root.title("Video Course Tracker")
-
+        
         self.tree = ttk.Treeview(self.root, columns=("Progress",), show="tree")
         self.tree.heading("#0", text="Course Folder", anchor="w")
         self.tree.heading("Progress", text="Progress")
@@ -21,6 +30,34 @@ class VideoCourseTracker:
 
         self.load_course_data()
         self.create_context_menu()
+        copyright_label = tk.Label(root, text="Copyright (c) 2024 Vignesh_N_U\nDeveloped with 💝 for HIS\nFor support and contact, call 7338085595 or email vigneshun80@gmail.com")
+        copyright_label.pack(pady=10)
+
+        # Add a menu option to reset all progress
+        menu = tk.Menu(self.root)
+        self.root.config(menu=menu)
+        reset_menu = tk.Menu(menu, tearoff=0)
+        menu.add_cascade(label="Options", menu=reset_menu)
+        reset_menu.add_command(label="Reset All Progress", command=self.reset_all_progress)
+
+    def reset_all_progress(self):
+        # Display a confirmation dialog
+        confirm = messagebox.askyesno("Reset All Progress", "Are you sure you want to reset all progress? This action cannot be undone.")
+
+        if confirm:
+            # Clear all data from the database
+            conn = sqlite3.connect(self.db_file)
+            c = conn.cursor()
+            c.execute("DELETE FROM video_progress")
+            conn.commit()
+            conn.close()
+
+            # Clear the treeview
+            self.tree.delete(*self.tree.get_children())
+
+            # Reload the course data
+            self.load_course_data()
+            messagebox.showinfo("Reset All Progress", "All progress has been reset.")
 
     def create_db_table(self):
         conn = sqlite3.connect(self.db_file)
@@ -54,6 +91,7 @@ class VideoCourseTracker:
                 self.tree.insert(parent, "end", text=item, values=(progress,))
 
         conn.close()
+        self.update_course_progress()
 
     def create_context_menu(self):
         context_menu = tk.Menu(self.root, tearoff=0)
@@ -155,16 +193,19 @@ class VideoCourseTracker:
         conn = sqlite3.connect(self.db_file)
         c = conn.cursor()
 
-        watched_videos = [item for item in self.tree.get_children() if self.tree.item(item, "values")[0] == "Watched"]
+        watched_videos = [item for item in self.tree.get_children() if self.tree.item(item, "values")[0] == "Completed"]
         total_videos = self.tree.get_children()
         
 
-        course_progress = f"{len(watched_videos)}/{len(total_videos)} videos watched"
+        course_progress = f"{len(watched_videos)}/{len(total_videos)} completed"
         self.root.title(f"Video Course Tracker - {course_progress}")
 
         conn.close()
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = VideoCourseTracker(root, "C:\Diploma")
-    root.mainloop()
+    folder_path = filedialog.askdirectory(title="Select Course Folder")
+    if folder_path:
+        root = tk.Tk()
+        app = VideoCourseTracker(root, folder_path)
+        root.focus_force()
+        root.mainloop()
