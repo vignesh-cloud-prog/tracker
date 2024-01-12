@@ -1,62 +1,109 @@
-# Video Demonstration Script: CourseTracker
+# Video Tracker
 
-## Opening Scene
+Video Tracker is a simple yet powerful application designed to help you track your progress in multiple video courses. Easily manage watched and completed videos within an intuitive interface.
 
-Hello, everyone! In this video, I'll be demonstrating the features of the CourseTracker application, a tool to help you track your progress in courses.
+## Table of Contents
 
-## Problem Statement
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+  - [Launching the Application](#launching-the-application)
+  - [Managing Courses and Videos](#managing-courses-and-videos)
+- [Development](#development)
+  - [Building the Executable](#building-the-executable)
+  - [Making Changes](#making-changes)
+  - [Pushing Changes](#pushing-changes)
+- [Contributing](#contributing)
+- [License](#license)
 
-Imagine having multiple courses with various folders, and it becomes challenging to keep track of which videos you've watched or completed. This is where CourseTracker comes to the rescue!
+## Features
 
-## Scene 1: Opening the Application
+- Track progress in multiple video courses.
+- Mark videos as watched or completed.
+- User-friendly interface for easy navigation.
+- Support for managing multiple folders.
 
-Let's start by opening the CourseTracker application.
+## Getting Started
 
-**Action:**
-- Click on the application icon.
+### Prerequisites
 
-## Scene 2: Selecting a Course Folder
+- Python 3.x
+- Tkinter library
 
-Now, let's navigate through the application and select a course folder.
+### Installation
 
-**Action:**
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/vignesh-cloud-prog/tracker.git
+   cd videotracker
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+### Launching the Application
+
+Run the following command to launch Video Tracker:
+
+```bash
+python tracker.py
+```
+
+### Managing Courses and Videos
+
 - Open the application.
-- Navigate to the course folder named "Python Basics."
+- Navigate through courses and folders.
+- Mark videos as watched or completed.
 
-## Scene 3: Marking a Video as Watched
+## Development
 
-Next, we'll mark one of the videos in the selected folder as watched.
+### Building the Executable
 
-**Action:**
-- Open the folder "Python Basics."
-- Mark the video "Introduction to Python" as watched.
+To create an executable file for distribution, you can use tools like `pyinstaller` or `cx_Freeze`. For example, using `pyinstaller`:
 
-## Scene 4: Marking a Video as Completed
+```bash
+pyinstaller --onefile tracker.py
+```
 
-Now, let's mark another video in the same folder as completed.
+This will generate a standalone executable in the `dist` directory.
 
-**Action:**
-- Mark the video "Variables and Data Types" as completed.
+### Making Changes
 
-## Scene 5: Exploring Another Course Folder
+1. Create a new branch for your changes:
 
-CourseTracker allows you to manage multiple courses easily. Let's explore another course folder.
+   ```bash
+   git checkout -b feature/new-feature
+   ```
 
-**Action:**
-- Navigate to the course folder named "Web Development."
+2. Make your changes and commit them:
 
-## Scene 6: Marking a Video as Watched in a Different Folder
+   ```bash
+   git add .
+   git commit -m "Add new feature"
+   ```
 
-Just like before, we can mark a video as watched in this folder.
+### Pushing Changes
 
-**Action:**
-- Open the folder "Web Development."
-- Mark the video "HTML Basics" as watched.
+Push your changes to the remote repository:
 
-## Closing Scene
+```bash
+git push origin feature/new-feature
+```
 
-And there you have it! CourseTracker simplifies the process of tracking your progress in multiple courses.
+Submit a pull request on GitHub for review and merge.
 
-Thank you for watching this demonstration. If you find this tool useful, feel free to give it a try!
+## Contributing
 
-**Closing Credits**
+Contributions are welcome! Please follow the [Contributing Guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
