@@ -5,6 +5,7 @@ Video Tracker is a simple yet powerful application designed to help you track yo
 ## Table of Contents
 
 - [Features](#features)
+- [Demo](#demo)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -24,6 +25,9 @@ Video Tracker is a simple yet powerful application designed to help you track yo
 - Mark videos as watched or completed.
 - User-friendly interface for easy navigation.
 - Support for managing multiple folders.
+
+## Demo
+[🎦 YouTube](https://youtu.be/4r4DSAEbnfY?si=NducYApF4oCrNP2m)
 
 ## Getting Started
 
